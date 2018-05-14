@@ -30,6 +30,19 @@ class RegistrationForm extends Form
 
     $this->add($name);
 
+    // Login
+    $login = new Text('login');
+
+    $login->setLabel('Login');
+
+    $login->addValidators([
+      new PresenceOf([
+        'message' => 'Login is required'
+      ])
+    ]);
+
+    $this->add($login);
+
     // Email
     $email = new Text('email');
 
@@ -56,29 +69,12 @@ class RegistrationForm extends Form
         'message' => 'The password is required'
       ]),
       new StringLength([
-        'min' => 8,
-        'messageMinimum' => 'Password is too short. Minimum 8 characters'
-      ]),
-      new Confirmation([
-        'message' => 'Password doesn\'t match confirmation',
-        'with' => 'confirmPassword'
+        'min' => 4,
+        'messageMinimum' => 'Password is too short. Minimum 4 characters'
       ])
     ]);
 
     $this->add($password);
-
-    // Confirm Password
-    $confirmPassword = new Password('confirmPassword');
-
-    $confirmPassword->setLabel('Confirm Password');
-
-    $confirmPassword->addValidators([
-      new PresenceOf([
-        'message' => 'The confirmation password is required'
-      ])
-    ]);
-
-    $this->add($confirmPassword);
 
     // Remember
     $admin = new Check('isAdmin', [

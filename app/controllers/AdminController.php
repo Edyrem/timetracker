@@ -56,11 +56,11 @@ class AdminController extends Controller
       'workDays' => $work_days,
     ]);
 
-    print_die($statistics);
+    //print_die($statistics);
 
   }
 
-  public function newUserRegistrationAction()
+  public function registrationAction()
   {
     $form = new RegistrationForm();
 
@@ -74,6 +74,7 @@ class AdminController extends Controller
 
         $user = new Users([
           'name' => $this->request->getPost('name', 'striptags'),
+          'login' => $this->request->getPost('login', 'striptags'),
           'email' => $this->request->getPost('email'),
           'password' => $this->security->hash($this->request->getPost('password')),
           'registration' => date('Y-m-d'),
@@ -98,5 +99,10 @@ class AdminController extends Controller
     }
 
     $this->view->form = $form;
+  }
+
+  public function userProfileAction()
+  {
+
   }
 }

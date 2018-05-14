@@ -16,6 +16,13 @@
 					{{ form.messages('name') }}
 				</td>
 			</tr>
+            <tr>
+                <td align="right">{{ form.label('login') }}</td>
+                <td>
+                    {{ form.render('login') }}
+                    {{ form.messages('login') }}
+                </td>
+            </tr>
 			<tr>
 				<td align="right">{{ form.label('email') }}</td>
 				<td>
@@ -28,13 +35,6 @@
 				<td>
 					{{ form.render('password') }}
 					{{ form.messages('password') }}
-				</td>
-			</tr>
-			<tr>
-				<td align="right">{{ form.label('confirmPassword') }}</td>
-				<td>
-					{{ form.render('confirmPassword') }}
-					{{ form.messages('confirmPassword') }}
 				</td>
 			</tr>
 			<tr>
